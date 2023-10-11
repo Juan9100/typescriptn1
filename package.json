@@ -4,7 +4,8 @@
   "description": "This repo is to store all the codes created within the Typescript N1 course.",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node app.ts"
+    "start": "ts-node app.ts",
+    "start-inheritance": "ts-node inheritance/index.ts"
   },
   "keywords": [],
   "author": "",
