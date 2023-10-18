@@ -4,8 +4,6 @@ import {
     wrapper
 } from '../../../libs';
 
-
-
 export const getPetsInfo = async (limit?: number) => {
     const query = limit 
         ? petInfo.find().limit(limit)
@@ -23,14 +21,19 @@ export const savePetInfo = async (pet: PetInfo) => {
     return saveResult;
 }
 
-export const updatePetInfo = async (pet: Pick<Partial<PetInfo>, 'name'>) => {
-    const { name, age, typeOfPet } = pet;
+export const deletePetInfo = async (id: string) => {
+    const deleteResult = await wrapper(petInfo.deleteOne({ _id: id }));
 
-    const updateObject: Partial<PetInfo> = {};
+    return deleteResult;
+} 
 
-    name ? updateObject.name = name : '';
-    age ? updateObject.age = age : '';
-    typeOfPet ? updateObject.typeOfPet = typeOfPet : '';
+export const updatePetInfo = async (pet: Partial<PetInfo>) => {
+    const { _id, name, age, typeOfPet } = pet;
+    const updateResult = await wrapper(petInfo.updateOne({ _id}, {
+        name,
+        age,
+        typeOfPet
+    }));
 
-    const updateResult = await wrapper(petInfo.findOneAndUpdate(pet, updateObject))
+    return updateResult;
 }
