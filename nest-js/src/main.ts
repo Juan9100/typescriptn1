@@ -9,7 +9,7 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Person backend')
     .setDescription('Backend that has a crud for person')
-    .setVersion('1.0.0')
+    .setVersion('1.0.1')
     .addTag('person', 'Routes for person')
     .build()
 
